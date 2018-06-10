@@ -10,7 +10,6 @@
             * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
                 * Enable inline JS: add 'unsafe-inline' to default-src
         -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
 
     <!-- Required meta tags-->
     <meta charset="utf-8">
@@ -19,6 +18,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="format-detection" content="telephone=no">
     <meta name="msapplication-tap-highlight" content="no">
+    <meta http-equiv="Content-Security-Policy" content="default-src *; style-src *  'unsafe-inline'; script-src *  'unsafe-inline'; media-src *">
 
     <!-- Your app title -->
     <title>Muno</title>
@@ -26,7 +26,6 @@
     <!-- This template defaults to the iOS CSS theme. To support both iOS and material design themes, see the Framework7 Tutorial at the link below:
         http://www.idangero.us/framework7/tutorials/maintain-both-ios-and-material-themes-in-single-app.html
      -->
-
     <link rel="stylesheet" href="lib/framework7/css/framework7.ios.min.css">
     <link rel="stylesheet" href="lib/framework7/css/framework7.ios.rtl.min.css">
     <link rel="stylesheet" href="lib/framework7/css/framework7.ios.colors.min.css">
@@ -49,6 +48,13 @@
         xhttp.open("GET", "http://muno.ir/WS/rand.php", true);
         xhttp.send();
 
+        function getRemote() {
+            return $.ajax({
+                type: "GET",
+                url: remote_url,
+                async: false
+            }).responseText;
+        }
     </script>
     <script>
         var aud = document.getElementById("myAudio");
@@ -165,7 +171,7 @@
             <div class="toolbar">
                 <div class="toolbar-inner">
                     <!-- Toolbar links -->
-                    <a href="#" class="link" onclick="nextM()">پخش تصادفی</a>
+                    <a href="#" class="link" onclick="nextM()">پخش تصادفی 1</a>
                     <a href="#" class="link">تست</a>
                 </div>
             </div>
