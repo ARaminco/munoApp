@@ -1,11 +1,9 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="co.araminco.muno" version="1.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>muno</name>
-    <description>
-        A basic Framework7 template for PhoneGap.
-    </description>
-    <author email="dev@cordova.apache.org" href="http://cordova.io">
-        Apache Cordova Team
+    <description>پخش رایگان موزیک با ترافیک رایگان !</description>
+    <author email="info@muno.ir" href="http://mino.ir">
+        muno.ir
     </author>
     <content src="index.html" />
     <access origin="*" />
@@ -18,14 +16,10 @@
     <platform name="android">
         <preference name="android-minSdkVersion" value="14" />
         <allow-intent href="market:*" />
-        <allow-navigation href="http://*/*" />
-        <allow-intent href="https://*/*" />
     </platform>
     <platform name="ios">
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
-        <allow-navigation href="http://*/*" />
-        <allow-intent href="https://*/*" />
         <preference name="BackupWebStorage" value="none" />
     </platform>
     <preference name="DisallowOverscroll" value="true" />
