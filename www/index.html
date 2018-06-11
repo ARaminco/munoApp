@@ -21,7 +21,7 @@
     <meta http-equiv="Content-Security-Policy" content="default-src *; style-src *  'unsafe-inline'; script-src *  'unsafe-inline'; media-src *">
 
     <!-- Your app title -->
-    <title>Muno</title>
+    <title></title>
 
     <!-- This template defaults to the iOS CSS theme. To support both iOS and material design themes, see the Framework7 Tutorial at the link below:
         http://www.idangero.us/framework7/tutorials/maintain-both-ios-and-material-themes-in-single-app.html
@@ -40,8 +40,9 @@
                 var munoArray = JSON.parse(munoJason);
                 document.getElementById('mp3').src =  munoArray.mp3 ;
                 document.getElementById('cover').src =  munoArray.cover ;
-                document.getElementById('mname').innerHTML =  munoArray.mname ;
-                document.getElementById('msinger').innerHTML =  munoArray.msinger ;
+                document.getElementById('coverbg').style.backgroundImage =  "url('" + munoArray.cover + "')" ;
+                document.getElementById('nameandsinger').innerHTML =  munoArray.mname + " | " + munoArray.msinger;
+                document.getElementById('biographi').innerHTML = " بیوگرافی " + munoArray.msinger ;
                 document.getElementById('mview').innerHTML =  munoArray.mview ;
             }
         };
@@ -71,8 +72,11 @@
                     var munoArray = JSON.parse(munoJason);
                     document.getElementById('mp3').src =  munoArray.mp3 ;
                     document.getElementById('cover').src =  munoArray.cover ;
-                    document.getElementById('mname').innerHTML =  munoArray.mname ;
-                    document.getElementById('msinger').innerHTML =  munoArray.msinger ;
+                    document.getElementById('nameandsinger').innerHTML =  munoArray.mname + " | " + munoArray.msinger ;
+
+                    document.getElementById('coverbg').style.backgroundImage =  "url('" + munoArray.cover + "')" ;
+
+                    document.getElementById('biographi').innerHTML = " بیوگرافی " + munoArray.msinger ;
                     document.getElementById('mview').innerHTML =  munoArray.mview ;
 
                     var container = document.getElementById("play");
@@ -91,6 +95,31 @@
         body{
             font-family: Arial;
         }
+
+        .background-image {
+            position: fixed;
+            left: 0;
+            right: 0;
+            z-index: 1;
+
+            display: block;
+            background-size: cover;
+            width: 1200px;
+            height: 800px;
+
+            -webkit-filter: blur(5px);
+            -moz-filter: blur(5px);
+            -o-filter: blur(5px);
+            -ms-filter: blur(5px);
+            filter: blur(5px);
+        }
+
+        .mymunocontent {
+            position: fixed;
+            left: 0;
+            right: 0;
+            z-index: 9999;
+        }
     </style>
 </head>
 
@@ -101,14 +130,14 @@
     <!-- Panels overlay-->
     <div class="panel-overlay"></div>
     <!-- Left panel with reveal effect-->
-    <div class="panel panel-left panel-reveal">
+    <div class="panel panel-right panel-reveal">
         <div class="content-block" style="text-align: center">
             <img src="img/munoblack.png" height="50px" style="align-content: center">
         </div>
         <div class="toolbar">
             <div class="toolbar-inner">
                 <!-- Toolbar links -->
-                <a href="#" class="link">Link 1</a>
+                <a href="#" class="link" id="biographi"></a>
             </div>
         </div>
     </div>
@@ -121,48 +150,42 @@
             <div class="navbar">
                 <div class="navbar-inner">
                     <!-- We need cool sliding animation on title element, so we have additional "sliding" class -->
-                    <div class="center sliding left" style="padding-right: 30px"><img src="img/munoblack.png" height="30px"></div>
-                    <div class="right">
-                        <!--
-                          Right link contains only icon - additional "icon-only" class
-                          Additional "open-panel" class tells app to open panel when we click on this link
-                        -->
-                        <a href="#" class="link icon-only open-panel"><i class="icon icon-bars"></i></a>
-                    </div>
+                    <a href="#" class="link icon-only open-panel"><i class="icon icon-bars"></i></a>
+                    <img src="img/munoblack.png" height="30px">
+                    <a href="#" class="link icon-only" onclick="nextM()" ><i class="icon icon-next"></i></a>
+
                 </div>
             </div>
             <!-- Pages container, because we use fixed-through navbar and toolbar, it has additional appropriate classes-->
             <div class="pages navbar-through toolbar-through" >
                 <!-- Page, "data-page" contains page name -->
-                <div data-page="index" class="page home-bg">
+                <div data-page="index" class="page   "  >
+                    <div class="background-image " id="coverbg" ></div>
+
                     <!-- Scrollable page content -->
-                    <div class="page-content">
-                        <div class="content-block" id="play">
-                            <div class="t-center" >
+                    <div class="page-content mymunocontent" >
+                        <div class="content-block " id="play">
+                            <div class="t-center"  >
                                 <img id='cover' src="" style="width: 90% " class="col-100 tablet-33 lazy lazy-fade-in" >
                             </div>
+                            <div class="card">
+                                <div class="card-header "><strong id="nameandsinger"></strong></div>
+                                <div class="card-content card-content-padding">
+                                    <div class="col-100" style="margin-right: 5px;margin-left: 5px;margin-top: 10px">
+                                        <audio controls style="width: 100% ;" autoplay id="myAudio" onended="nextM()" >
+                                            <source id="mp3" src="" type="audio/mpeg" autostart="true">
+                                        </audio>
+                                    </div>
 
-                            <div class="text-align-center" style="text-align: center">
-
-                                <strong id="mname"></strong> | <strong id="msinger"></strong>
+                                    <strong class="page-content" style="margin-right: 10px"> <i class="icon icon-prev" aria-hidden="true"></i> تعداد پخش : <b id="mview"></b> </strong>
+                                    <div class=" logoha" style="text-align: center ; padding-top: 10px " >
+                                        <img src="http://photoup.aramin.co/images/download-1510171516.png" width="30px">
+                                        <img src="http://photoup.aramin.co/images/download_(1)-1510171541.png" width="30px">
+                                        <img src="http://photoup.aramin.co/images/download_(3)-1510171561.png" width="30px">
+                                        <img src="http://photoup.aramin.co/images/download-1510171606.jpeg" width="30px">
+                                    </div>
+                                </div>
                             </div>
-                            <div class="col-100">
-                                <audio controls style="width: 100%" autoplay id="myAudio" onended="nextM()" >
-                                    <source id="mp3" src="" type="audio/mpeg" autostart="true">
-                                </audio>
-                            </div>
-
-
-                            <p style="font-family: 'Vazir'!important;">
-                                <strong> <i class="fa fa-music" aria-hidden="true"></i> تعداد پخش : <b id="mview"></b> </strong>
-                            <div class=" logoha" style="text-align: center">
-                                <img src="http://photoup.aramin.co/images/download-1510171516.png" width="30px">
-                                <img src="http://photoup.aramin.co/images/download_(1)-1510171541.png" width="30px">
-                                <img src="http://photoup.aramin.co/images/download_(3)-1510171561.png" width="30px">
-                                <img src="http://photoup.aramin.co/images/download-1510171606.jpeg" width="30px">
-                            </div>
-                            </p>
-
                         </div>
                     </div>
                 </div>
@@ -171,8 +194,6 @@
             <div class="toolbar">
                 <div class="toolbar-inner">
                     <!-- Toolbar links -->
-                    <a href="#" class="link" onclick="nextM()">پخش تصادفی 1</a>
-                    <a href="#" class="link">تست</a>
                 </div>
             </div>
         </div>
