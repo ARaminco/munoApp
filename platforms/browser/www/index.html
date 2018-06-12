@@ -21,7 +21,7 @@
     <meta http-equiv="Content-Security-Policy" content="default-src *; style-src *  'unsafe-inline'; script-src *  'unsafe-inline'; media-src *">
 
     <!-- Your app title -->
-    <title></title>
+    <title>میونو</title>
 
     <!-- This template defaults to the iOS CSS theme. To support both iOS and material design themes, see the Framework7 Tutorial at the link below:
         http://www.idangero.us/framework7/tutorials/maintain-both-ios-and-material-themes-in-single-app.html
@@ -57,11 +57,13 @@
                     var munoArray = JSON.parse(munoJason);
                     document.getElementById('mp3').src =  munoArray.mp3 ;
                     document.getElementById('cover').src =  munoArray.cover ;
+                    document.getElementById('munoQR').src =  "http://qrg.aramin.co/?text=http://muno.ir/p-"+ munoArray.mid ;
                     document.getElementById('nameandsinger').innerHTML =  munoArray.mname + '<span class="narengi">' +' | ' + "<span> " + munoArray.msinger ;
                     document.getElementById('singerid').innerHTML = munoArray.singerid;
                     document.getElementById('coverbg').style.backgroundImage =  "url('" + munoArray.cover + "')" ;
                     document.getElementById('biographi').innerHTML = " بیوگرافی " + munoArray.msinger ;
                     document.getElementById('mview').innerHTML =  munoArray.mview ;
+                    document.getElementById('munoLink').innerHTML = "muno.ir/p-"+ munoArray.mid ;
 
                     var container = document.getElementById("play");
                     var content = container.innerHTML;
@@ -123,10 +125,11 @@
 
         </div>
         <div class="content-block" style="text-align: right">
-            <p><a class="sefid" href="bio.html"><i class="fa fa-user"></i> <span id="biographi"></span></a></p>
+            <p><a class="sefid panel-close" href="bio.html"><i class="fa fa-user"></i> <span id="biographi"></span></a></p>
 
-            <p><a class="sefid" href="changes.html"><i class="fa fa-star"></i> تغییرات اپلیکیشن </a></p>
-            <p><a class="sefid" href="about.html"><i class="fa fa-question-circle-o"></i> درباره ما</a></p>
+            <p><a class="sefid panel-close" href="changes.html"><i class="fa fa-star"></i> تغییرات اپلیکیشن </a></p>
+            <p><a class="sefid panel-close" href="#" onclick="window.open('http://apk.muno.ir', '_system');" ><i class="fa fa-android"></i> نصب آخرین نسخه آندروید </a></p>
+            <p><a class="sefid panel-close" href="about.html"><i class="fa fa-question-circle-o"></i> درباره ما</a></p>
 
         </div>
     </div>
@@ -156,6 +159,7 @@
                                <img class="center" src="img/munoicon.png" width="50%" style="text-align: center"><br>
                                <strong class="narengi">www.MUNO.ir</strong><br>
                                <strong class="narengi" style="text-align: center">لطفا کمی صبر کنید ...</strong>
+                               <button class="col button button-fill color-orange center" onclick="nextM();" style="width: 100%"> تلاش مجدد </button>
                            </p>
                         </div>
                     </div>
@@ -172,11 +176,18 @@
                                             <source id="mp3" src="" type="audio/mpeg" autostart="true">
                                         </audio>
                                     </div>
-                                    <p id="singerid" style="display: none"></p>
-                                    <strong class="page-content class-myfont" style="margin-right: 10px"> <i class="fa fa-music narengi"></i> تعداد پخش : <b id="mview"></b> </strong>
-                                    <div class=" logoha" style="text-align: center ; padding-top: 10px " >
-                                        <img src="http://dlmuno.aramin.co/muno/test/intenet-1.jpg" height="50px">
+                                    <div class="row">
+                                        <p id="singerid" style="display: none"></p>
+                                        <div class="col-25" style="margin-top: -10px ">
+                                            <img src="http://qrg.aramin.co/?text=http://muno.ir/p-301" onclick="copy2clipbordMuno()" id="munoQR">
 
+                                        </div>
+                                        <div class="col-75">
+                                            <strong class="page-content class-myfont" style="margin-right: 10px"> <i class="fa fa-music narengi"></i> تعداد پخش : <b id="mview"></b> </strong><br>
+                                            <strong class="page-content class-myfont" style="margin-right: 10px"> <i class="fa fa-link narengi"></i> لینک میونو : <b id="munoLink"></b> </strong><br>
+                                            <img src="img/intenet.jpg" height="50px">
+
+                                        </div>
                                     </div>
                                 </div>
                             </div>

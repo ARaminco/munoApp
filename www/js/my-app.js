@@ -42,6 +42,12 @@ $$(document).on('pageInit', '.page[data-page="about"]', function (e) {
     // Following code will be executed for page with data-page attribute equal to "about"
 })
 
+
+$$('.panel-close').on('click', function (e) {
+    myApp.closePanel();
+});
+
+
 $$(document).on('pageInit', '.page[data-page="sbio"]', function (e) {
     // Following code will be executed for page with data-page attribute equal to "about"
     var sid = document.getElementById('singerid').innerText;
@@ -63,4 +69,3 @@ $$(document).on('pageInit', '.page[data-page="sbio"]', function (e) {
     xhttp.open("GET", "http://muno.ir/WS/bio.php?sid="+ sid, true);
     xhttp.send();
 })
-
