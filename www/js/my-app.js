@@ -39,3 +39,28 @@ $$(document).on('pageInit', function (e) {
 $$(document).on('pageInit', '.page[data-page="about"]', function (e) {
     // Following code will be executed for page with data-page attribute equal to "about"
 })
+
+$$(document).on('pageInit', '.page[data-page="sbio"]', function (e) {
+    // Following code will be executed for page with data-page attribute equal to "about"
+    var sid = document.getElementById('singerid').innerText;
+
+    var munoJason = '';
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            munoJason = this.responseText ;
+            var munoArray = JSON.parse(munoJason);
+            document.getElementById('biotext').innerHTML =  munoArray.biotext ;
+            document.getElementById('bioName').innerHTML =  munoArray.bioname ;
+            document.getElementById('bioTavalod').innerHTML =  munoArray.biotavalod ;
+            document.getElementById('bioSabk').innerHTML =  munoArray.biosabk ;
+            document.getElementById('biophoto').src =  munoArray.biophoto ;
+
+        }
+    };
+    xhttp.open("GET", "http://muno.ir/WS/bio.php?sid="+ sid, true);
+    xhttp.send();
+
+
+})
+

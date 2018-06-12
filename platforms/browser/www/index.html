@@ -26,36 +26,16 @@
     <!-- This template defaults to the iOS CSS theme. To support both iOS and material design themes, see the Framework7 Tutorial at the link below:
         http://www.idangero.us/framework7/tutorials/maintain-both-ios-and-material-themes-in-single-app.html
      -->
+
     <link rel="stylesheet" href="lib/framework7/css/framework7.ios.min.css">
     <link rel="stylesheet" href="lib/framework7/css/framework7.ios.rtl.min.css">
     <link rel="stylesheet" href="lib/framework7/css/framework7.ios.colors.min.css">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
     <link rel="stylesheet" href="css/styles.css">
     <script>
-        var munoJason = '';
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                munoJason = this.responseText ;
-                var munoArray = JSON.parse(munoJason);
-                document.getElementById('mp3').src =  munoArray.mp3 ;
-                document.getElementById('cover').src =  munoArray.cover ;
-                document.getElementById('coverbg').style.backgroundImage =  "url('" + munoArray.cover + "')" ;
-                document.getElementById('nameandsinger').innerHTML =  munoArray.mname + " | " + munoArray.msinger;
-                document.getElementById('biographi').innerHTML = " بیوگرافی " + munoArray.msinger ;
-                document.getElementById('mview').innerHTML =  munoArray.mview ;
-            }
-        };
-        xhttp.open("GET", "http://muno.ir/WS/rand.php", true);
-        xhttp.send();
 
-        function getRemote() {
-            return $.ajax({
-                type: "GET",
-                url: remote_url,
-                async: false
-            }).responseText;
-        }
     </script>
     <script>
         var aud = document.getElementById("myAudio");
@@ -73,9 +53,8 @@
                     document.getElementById('mp3').src =  munoArray.mp3 ;
                     document.getElementById('cover').src =  munoArray.cover ;
                     document.getElementById('nameandsinger').innerHTML =  munoArray.mname + " | " + munoArray.msinger ;
-
+                    document.getElementById('singerid').innerHTML = munoArray.singerid;
                     document.getElementById('coverbg').style.backgroundImage =  "url('" + munoArray.cover + "')" ;
-
                     document.getElementById('biographi').innerHTML = " بیوگرافی " + munoArray.msinger ;
                     document.getElementById('mview').innerHTML =  munoArray.mview ;
 
@@ -120,10 +99,11 @@
             right: 0;
             z-index: 9999;
         }
+
     </style>
 </head>
 
-<body>
+<body onload="nextM();">
     <!-- Status bar overlay for full screen mode (PhoneGap) -->
     <div class="statusbar-overlay"></div>
 
@@ -137,7 +117,7 @@
         <div class="toolbar">
             <div class="toolbar-inner">
                 <!-- Toolbar links -->
-                <a href="#" class="link" id="biographi"></a>
+                <a href="bio.html" class="link" id="biographi"></a>
             </div>
         </div>
     </div>
@@ -150,9 +130,9 @@
             <div class="navbar">
                 <div class="navbar-inner">
                     <!-- We need cool sliding animation on title element, so we have additional "sliding" class -->
-                    <a href="#" class="link icon-only open-panel"><i class="icon icon-bars"></i></a>
-                    <img src="img/munoblack.png" height="30px">
-                    <a href="#" class="link icon-only" onclick="nextM()" ><i class="icon icon-next"></i></a>
+                    <a href="#" class="link icon-only open-panel"><i class="fa fa-bars"></i></a>
+                    <img src="img/munoblack.png"  height="30px">
+                    <a href="#" class="link icon-only">&nbsp;</a>
 
                 </div>
             </div>
@@ -161,7 +141,6 @@
                 <!-- Page, "data-page" contains page name -->
                 <div data-page="index" class="page   "  >
                     <div class="background-image " id="coverbg" ></div>
-
                     <!-- Scrollable page content -->
                     <div class="page-content mymunocontent" >
                         <div class="content-block " id="play">
@@ -176,8 +155,8 @@
                                             <source id="mp3" src="" type="audio/mpeg" autostart="true">
                                         </audio>
                                     </div>
-
-                                    <strong class="page-content" style="margin-right: 10px"> <i class="icon icon-prev" aria-hidden="true"></i> تعداد پخش : <b id="mview"></b> </strong>
+                                    <p id="singerid" style="display: none"></p>
+                                    <strong class="page-content class-myfont" style="margin-right: 10px"> <i class="fa fa-play"></i> تعداد پخش : <b id="mview"></b> </strong>
                                     <div class=" logoha" style="text-align: center ; padding-top: 10px " >
                                         <img src="http://photoup.aramin.co/images/download-1510171516.png" width="30px">
                                         <img src="http://photoup.aramin.co/images/download_(1)-1510171541.png" width="30px">
@@ -194,6 +173,9 @@
             <div class="toolbar">
                 <div class="toolbar-inner">
                     <!-- Toolbar links -->
+                    <a href="about.html">درباره میونو</a>
+
+                    <a href="#" class="link icon-only" onclick="nextM()" ><i class="fa fa-random"></i></a>
                 </div>
             </div>
         </div>
