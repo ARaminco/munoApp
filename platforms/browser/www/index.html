@@ -52,7 +52,7 @@
                     var munoArray = JSON.parse(munoJason);
                     document.getElementById('mp3').src =  munoArray.mp3 ;
                     document.getElementById('cover').src =  munoArray.cover ;
-                    document.getElementById('nameandsinger').innerHTML =  munoArray.mname + " | " + munoArray.msinger ;
+                    document.getElementById('nameandsinger').innerHTML =  munoArray.mname + '<span class="narengi">' +' | ' + "<span> " + munoArray.msinger ;
                     document.getElementById('singerid').innerHTML = munoArray.singerid;
                     document.getElementById('coverbg').style.backgroundImage =  "url('" + munoArray.cover + "')" ;
                     document.getElementById('biographi').innerHTML = " بیوگرافی " + munoArray.msinger ;
@@ -100,12 +100,13 @@
             z-index: 9999;
         }
 
+
     </style>
 </head>
 
 <body onload="nextM();">
     <!-- Status bar overlay for full screen mode (PhoneGap) -->
-    <div class="statusbar-overlay"></div>
+    <div class="statusbar-overlay" ></div>
 
     <!-- Panels overlay-->
     <div class="panel-overlay"></div>
@@ -113,12 +114,13 @@
     <div class="panel panel-right panel-reveal">
         <div class="content-block" style="text-align: center">
             <img src="img/munoblack.png" height="50px" style="align-content: center">
+            <hr style="border-color: #F59331;">
+
         </div>
-        <div class="toolbar">
-            <div class="toolbar-inner">
-                <!-- Toolbar links -->
-                <a href="bio.html" class="link" id="biographi"></a>
-            </div>
+        <div class="content-block" style="text-align: right">
+            <p><a class="sefid" href="bio.html"><i class="fa fa-user"></i> <span id="biographi"></span></a></p>
+            <p><a class="sefid" href="about.html"><i class="fa fa-question-circle-o"></i> درباره ما</a></p>
+
         </div>
     </div>
 
@@ -127,13 +129,12 @@
         <!-- Your main view, should have "view-main" class -->
         <div class="view view-main">
             <!-- Top Navbar-->
-            <div class="navbar">
+            <div class="navbar" >
                 <div class="navbar-inner">
                     <!-- We need cool sliding animation on title element, so we have additional "sliding" class -->
-                    <a href="#" class="link icon-only open-panel"><i class="fa fa-bars"></i></a>
+                    <a href="#" class="link icon-only open-panel"><i class="fa fa-bars narengi"></i></a>
                     <img src="img/munoblack.png"  height="30px">
                     <a href="#" class="link icon-only">&nbsp;</a>
-
                 </div>
             </div>
             <!-- Pages container, because we use fixed-through navbar and toolbar, it has additional appropriate classes-->
@@ -148,7 +149,7 @@
                                 <img id='cover' src="" style="width: 90% " class="col-100 tablet-33 lazy lazy-fade-in" >
                             </div>
                             <div class="card">
-                                <div class="card-header "><strong id="nameandsinger"></strong></div>
+                                <div class="card-header "><strong id="nameandsinger"></strong> <a class="narengi" onclick="nextM()"><i class="fa fa-random"></i></a></div>
                                 <div class="card-content card-content-padding">
                                     <div class="col-100" style="margin-right: 5px;margin-left: 5px;margin-top: 10px">
                                         <audio controls style="width: 100% ;" autoplay id="myAudio" onended="nextM()" >
@@ -156,12 +157,10 @@
                                         </audio>
                                     </div>
                                     <p id="singerid" style="display: none"></p>
-                                    <strong class="page-content class-myfont" style="margin-right: 10px"> <i class="fa fa-play"></i> تعداد پخش : <b id="mview"></b> </strong>
+                                    <strong class="page-content class-myfont" style="margin-right: 10px"> <i class="fa fa-music narengi"></i> تعداد پخش : <b id="mview"></b> </strong>
                                     <div class=" logoha" style="text-align: center ; padding-top: 10px " >
-                                        <img src="http://photoup.aramin.co/images/download-1510171516.png" width="30px">
-                                        <img src="http://photoup.aramin.co/images/download_(1)-1510171541.png" width="30px">
-                                        <img src="http://photoup.aramin.co/images/download_(3)-1510171561.png" width="30px">
-                                        <img src="http://photoup.aramin.co/images/download-1510171606.jpeg" width="30px">
+                                        <img src="http://dlmuno.aramin.co/muno/test/intenet-1.jpg" height="50px">
+
                                     </div>
                                 </div>
                             </div>
@@ -170,14 +169,6 @@
                 </div>
             </div>
             <!-- Bottom Toolbar-->
-            <div class="toolbar">
-                <div class="toolbar-inner">
-                    <!-- Toolbar links -->
-                    <a href="about.html">درباره میونو</a>
-
-                    <a href="#" class="link icon-only" onclick="nextM()" ><i class="fa fa-random"></i></a>
-                </div>
-            </div>
         </div>
     </div>
 
