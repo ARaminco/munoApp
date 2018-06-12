@@ -62,7 +62,5 @@ $$(document).on('pageInit', '.page[data-page="sbio"]', function (e) {
     };
     xhttp.open("GET", "http://muno.ir/WS/bio.php?sid="+ sid, true);
     xhttp.send();
-
-
 })
 
