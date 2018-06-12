@@ -73,14 +73,14 @@
                     console.log("Refreshed");
                 }
             };
-            xhttp.open("GET", "http://muno.ir/WS/rand.php", true);
+            xhttp.open("GET", "http://muno.ir/WS/music.php", true);
             xhttp.send();
+
+
         }
+
     </script>
     <style>
-        body{
-            font-family: Arial;
-        }
 
         .background-image {
             position: fixed;
@@ -107,11 +107,65 @@
             z-index: 9999;
         }
 
+        #coverspl {
+            position: fixed;
+            height: 100%;
+            width: 100%;
+            top:0;
+            left: 0;
+            background: #000;
+            background-image: url("img/bgsp.jpg") ;
+            background-size: cover;
+            z-index: 9999;
+        }
+
+        #splash {
+            position:absolute;
+            top:0;
+            left:0;
+            right:0;
+            bottom:0;
+            margin:auto;
+        }
+
+
+
+        .centersp {
+            margin: 0;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+        }
 
     </style>
+    <script>
+        setTimeout(function(){
+            document.getElementById('c1').style.visibility='visible';
+        }, 1000);
+        setTimeout(function(){
+            document.getElementById('c2').style.visibility='visible';
+        }, 2000);
+        setTimeout(function(){
+            document.getElementById('c3').style.visibility='visible';
+        }, 3000);
+
+        setTimeout(function(){
+            document.getElementById('coverspl').style.display='none';
+        }, 4000);
+    </script>
 </head>
 
 <body onload="nextM();">
+    <div id ="coverspl">
+        <div class="centersp">
+            <img class="center" src="img/munoicon.png" width="200px">
+            <br><br>
+            <p class="centerp narengi" style="text-align: center ; font-size: medium ; font-weight: bold"  >اولین رسانه برخط صوتی <br> با ترافیک رایگان <br><br><i class="fa fa-circle " id="c1" style="visibility: hidden"></i>  <i class="fa fa-circle " id="c2" style="color: #3899B3;visibility: hidden"></i>  <i class="fa fa-circle " id="c3" style="color: white;visibility: hidden"></i></p>
+        </div>
+    </div>
+
     <!-- Status bar overlay for full screen mode (PhoneGap) -->
     <div class="statusbar-overlay" ></div>
 
@@ -169,7 +223,7 @@
                                 <img id='cover' src="" style="width: 90% " class="col-100 tablet-33 lazy lazy-fade-in" >
                             </div>
                             <div class="card">
-                                <div class="card-header "><strong id="nameandsinger"></strong> <a class="narengi" onclick="nextM()"><i class="fa fa-random"></i></a></div>
+                                <div class="card-header "><strong id="nameandsinger"></strong> <a class="narengi" onclick="nextM()"><i class="fa fa-random"></i></a> <a href="#" data-popup=".popup-about" class="open-popup"></a></div>
                                 <div class="card-content card-content-padding">
                                     <div class="col-100" style="margin-right: 5px;margin-left: 5px;margin-top: 10px">
                                         <audio controls style="width: 100% ;" autoplay id="myAudio" onended="nextM()" >
@@ -179,7 +233,7 @@
                                     <div class="row">
                                         <p id="singerid" style="display: none"></p>
                                         <div class="col-25" style="margin-top: -10px ">
-                                            <img src="http://qrg.aramin.co/?text=http://muno.ir/p-301" onclick="copy2clipbordMuno()" id="munoQR">
+                                            <img src="http://qrg.aramin.co/?text=http://muno.ir/p-301" onclick="" id="munoQR">
 
                                         </div>
                                         <div class="col-75">
