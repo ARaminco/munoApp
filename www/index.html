@@ -47,7 +47,12 @@
             var munoJason = '';
             var xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function() {
-                if (this.readyState == 4 && this.status == 200) {
+                if (this.readyState > 0 && this.readyState < 4){
+                    document.getElementById('musicPlay').style.display= 'none';
+                    document.getElementById('musicLoad').style.display= '';
+                }else if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById('musicPlay').style.display= '';
+                    document.getElementById('musicLoad').style.display= 'none';
                     munoJason = this.responseText ;
                     var munoArray = JSON.parse(munoJason);
                     document.getElementById('mp3').src =  munoArray.mp3 ;
@@ -145,7 +150,16 @@
                 <div data-page="index" class="page   "  >
                     <div class="background-image " id="coverbg" ></div>
                     <!-- Scrollable page content -->
-                    <div class="page-content mymunocontent" >
+                    <div class="page-content mymunocontent" id="musicLoad" >
+                        <div class="content-block " >
+                           <p style="text-align: center ; margin-top: 50%">
+                               <img class="center" src="img/munoicon.png" width="50%" style="text-align: center"><br>
+                               <strong class="narengi">www.MUNO.ir</strong><br>
+                               <strong class="narengi" style="text-align: center">لطفا کمی صبر کنید ...</strong>
+                           </p>
+                        </div>
+                    </div>
+                    <div class="page-content mymunocontent" id="musicPlay" style="display: none">
                         <div class="content-block " id="play">
                             <div class="t-center"  >
                                 <img id='cover' src="" style="width: 90% " class="col-100 tablet-33 lazy lazy-fade-in" >
