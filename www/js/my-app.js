@@ -2,7 +2,7 @@
 var myApp = new Framework7({
 
 });
-var appv = '1.1.2';
+var appv = '1.1.3';
 
 
 // If we need to use custom DOM library, let's save it to $$ variable:
