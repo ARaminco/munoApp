@@ -44,7 +44,7 @@
             alert('end');
         };
 
-        function nextM() {
+        function nextM( mid , sid) {
             var munoJason = '';
             var xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function() {
@@ -74,72 +74,59 @@
                     console.log("Refreshed");
                 }
             };
-            xhttp.open("GET", "http://muno.ir/WS/music.php", true);
+            xhttp.open("GET", "http://muno.ir/WS/music.php?mid=" + mid + "&sid=" + sid , true);
             xhttp.send();
 
+
+
+
+
+        }
+
+        function musiclist(sid,mod) {
+
+            var xhttp2 = new XMLHttpRequest();
+            xhttp2.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    var listJason = this.responseText ;
+                    var listArray = JSON.parse(listJason);
+
+                    var tout = '';
+                    for (i = 0; i < listArray.length; i++) {
+                        tout += "<li>\n" +
+                            "<a href=\"#\" class=\"item-link close-popup item-content\" onclick='nextM(" + listArray[i].mid + " , \"\")'>\n" +
+                            "<div class=\"item-media\"><img src=\""+ listArray[i].cover +"\" width=\"80\"></div>\n" +
+                            "<div class=\"item-inner\">\n" +
+                            "<div class=\"item-title-row\">\n" +
+                            "<div class=\"item-title\">"+ listArray[i].mname +"</div>\n" +
+                            "</div>\n" +
+                            "<div class=\"item-subtitle narengi\">" + listArray[i].msinger + "</div>\n" +
+                            "</div>\n" +
+                            "</a>\n" +
+                            "</li>" ;
+                    }
+                    document.getElementById("listSingerMusics").innerHTML = tout ;
+
+                }
+            };
+
+            xhttp2.open("GET", "http://muno.ir/WS/musicList.php?sid=" + sid + "&mod=" + mod , true);
+            xhttp2.send();
+
+        }
+
+        function menuFunction() {
+            var old = document.getElementById('menuIcon').style.visibility ;
+
+            if (old == 'visible') {
+                document.getElementById('menuIcon').style.visibility = 'hidden' ;
+            }else if (old == 'hidden') {
+                document.getElementById('menuIcon').style.visibility = 'visible' ;
+            }
         }
 
     </script>
-    <style>
 
-        .background-image {
-            position: fixed;
-            left: 0;
-            right: 0;
-            z-index: 1;
-
-            display: block;
-            background-size: cover;
-            width: 1200px;
-            height: 800px;
-
-            -webkit-filter: blur(5px);
-            -moz-filter: blur(5px);
-            -o-filter: blur(5px);
-            -ms-filter: blur(5px);
-            filter: blur(5px);
-        }
-
-        .mymunocontent {
-            position: fixed;
-            left: 0;
-            right: 0;
-            z-index: 9999;
-        }
-
-        #coverspl {
-            position: fixed;
-            height: 100%;
-            width: 100%;
-            top:0;
-            left: 0;
-            background: #000;
-            background-image: url("img/bgsp.jpg") ;
-            background-size: cover;
-            z-index: 9999;
-        }
-
-        #splash {
-            position:absolute;
-            top:0;
-            left:0;
-            right:0;
-            bottom:0;
-            margin:auto;
-        }
-
-
-
-        .centersp {
-            margin: 0;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            -ms-transform: translate(-50%, -50%);
-            transform: translate(-50%, -50%);
-        }
-
-    </style>
     <script>
         setTimeout(function(){
             document.getElementById('c1').style.visibility='visible';
@@ -157,7 +144,7 @@
     </script>
 </head>
 
-<body onload="nextM();">
+<body onload="nextM('','');">
     <div id ="coverspl">
         <div class="centersp">
             <img class="center" src="img/munoicon.png" width="200px">
@@ -175,16 +162,44 @@
     <div class="panel panel-right panel-reveal">
         <div class="content-block" style="text-align: center">
             <img src="img/munoblack.png" height="50px" style="align-content: center">
-            <hr style="border-color: #F59331;">
-
+            <hr style="border-color: #F59331;" >
         </div>
         <div class="content-block" style="text-align: right">
-            <p><a class="sefid panel-close" href="bio.html"><i class="fa fa-user"></i> <span id="biographi"></span></a></p>
 
-            <p><a class="sefid panel-close" href="changes.html"><i class="fa fa-star"></i> تغییرات اپلیکیشن </a></p>
+            <p><a class="sefid panel-close" href="changes.html" onclick="menuFunction()"><i class="fa fa-star"></i> تغییرات اپلیکیشن </a></p>
             <p><a class="sefid panel-close" href="#" onclick="window.open('http://apk.muno.ir', '_system');" ><i class="fa fa-android"></i> نصب آخرین نسخه آندروید </a></p>
-            <p><a class="sefid panel-close" href="about.html"><i class="fa fa-question-circle-o"></i> درباره ما</a></p>
+            <p><a class="sefid panel-close" href="#" onclick="window.open('http://instagram.com/muno.ir', '_system');" ><i class="fa fa-instagram"></i> صفحه اینستاگرام میونو </a></p>
+            <p><a class="sefid panel-close" href="#" onclick="window.open('http://t.me/munoir', '_system');" ><i class="fa fa-telegram"></i> صفحه تلگرام میونو </a></p>
+            <p><a class="sefid panel-close" href="#" onclick="window.open('http://muno.irr', '_system');" ><i class="fa fa-globe"></i> سایت میونو </a></p>
+            <p><a class="sefid panel-close" href="about.html" onclick="menuFunction()"><i class="fa fa-question-circle-o"></i> درباره ما</a></p>
 
+        </div>
+    </div>
+
+    <div class="panel panel-left panel-reveal">
+        <div class="content-block" style="text-align: center">
+            <img src="img/munoblack.png" height="50px" style="align-content: center">
+            <hr style="border-color: #F59331;">
+        </div>
+        <div class="content-block" style="text-align: right">
+            <h4> امکانات بر اساس هنرمند این اثر</h4>
+            <p><a class="sefid panel-close" href="bio.html" onclick="menuFunction()"><i class="fa fa-align-right"></i> <span id="biographi"></span></a></p>
+            <p><a class="sefid panel-close open-popup"  onclick="musiclist(document.getElementById('singerid').innerText, '');" href="#" data-popup=".popup-listSingerMusics"  ><i class="fa fa-music"></i> آثار های این هنرمند </a></p>
+            <h4>سایر آثار موجود در میونو</h4>
+            <p><a class="sefid panel-close open-popup"  onclick="musiclist('', 'topView');" href="#" data-popup=".popup-listSingerMusics"  ><i class="fa fa-thermometer-half"></i> پر بیننده ترین آثار </a></p>
+            <p><a class="sefid panel-close open-popup"  onclick="musiclist('', 'listNew');" href="#" data-popup=".popup-listSingerMusics"  ><i class="fa fa-star"></i> جدید ترین آثار </a></p>
+
+
+        </div>
+    </div>
+
+    <div class="popup popup-listSingerMusics">
+        <div class="content-block">
+            <p class="narengi" style="text-align: center ; font-size: large ; font-weight: bold"><a href="#" class="close-popup narengi"><i class="fa fa-sort-down"></i> بستن <i class="fa fa-sort-down"></i></a></p>
+            <div class="list-block media-list">
+                <ul id="listSingerMusics">
+                </ul>
+            </div>
         </div>
     </div>
 
@@ -196,9 +211,9 @@
             <div class="navbar" >
                 <div class="navbar-inner">
                     <!-- We need cool sliding animation on title element, so we have additional "sliding" class -->
-                    <a href="#" class="link icon-only open-panel"><i class="fa fa-bars narengi"></i></a>
+                    <a id="menuIcon" href="#" data-panel="right" class="link icon-only open-panel" style="visibility: visible"><i class="fa fa-bars narengi"></i></a>
                     <img src="img/munoblack.png"  height="30px">
-                    <a href="#" class="link icon-only">&nbsp;</a>
+                    <a id="menuIcon2"  href="#" class="link icon-only open-panel" style="visibility: visible"><i class="fa fa-music narengi"></i></a>
                 </div>
             </div>
             <!-- Pages container, because we use fixed-through navbar and toolbar, it has additional appropriate classes-->
@@ -213,7 +228,7 @@
                                <img class="center" src="img/munoicon.png" width="50%" style="text-align: center"><br>
                                <strong class="narengi">www.MUNO.ir</strong><br>
                                <strong class="narengi" style="text-align: center">لطفا کمی صبر کنید ...</strong>
-                               <button class="col button button-fill color-orange center" onclick="nextM();" style="width: 100%"> تلاش مجدد </button>
+                               <button class="col button button-fill color-orange center" onclick="nextM('','');" style="width: 100%"> تلاش مجدد </button>
                            </p>
                         </div>
                     </div>
@@ -223,10 +238,10 @@
                                 <img id='cover' src="" style="width: 90% " class="col-100 tablet-33 lazy lazy-fade-in" >
                             </div>
                             <div class="card">
-                                <div class="card-header "><strong id="nameandsinger"></strong> <a class="narengi" onclick="nextM()"><i class="fa fa-random"></i></a> </div>
+                                <div class="card-header "><strong id="nameandsinger"></strong> <a class="narengi" onclick="nextM('','')"><i class="fa fa-random"></i></a> </div>
                                 <div class="card-content card-content-padding">
                                     <div class="col-100" style="margin-right: 5px;margin-left: 5px;margin-top: 10px">
-                                        <audio controls style="width: 100% ;" autoplay id="myAudio" onended="nextM()" >
+                                        <audio controls style="width: 100% ;" autoplay id="myAudio" onended="nextM('','')" >
                                             <source id="mp3" src="" type="audio/mpeg" autostart="true">
                                         </audio>
                                     </div>

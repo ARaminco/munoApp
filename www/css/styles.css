@@ -103,3 +103,60 @@ h1 , h2 , h3 , h4 , h5, h6 {
 .panel-right{
     background-color: #273238;
 }
+
+.background-image {
+    position: fixed;
+    left: 0;
+    right: 0;
+    z-index: 1;
+
+    display: block;
+    background-size: cover;
+    width: 1200px;
+    height: 800px;
+
+    -webkit-filter: blur(5px);
+    -moz-filter: blur(5px);
+    -o-filter: blur(5px);
+    -ms-filter: blur(5px);
+    filter: blur(5px);
+}
+
+.mymunocontent {
+    position: fixed;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+}
+
+#coverspl {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top:0;
+    left: 0;
+    background: #000;
+    background-image: url("../img/bgsp.jpg") ;
+    background-size: cover;
+    z-index: 9999;
+}
+
+#splash {
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    margin:auto;
+}
+
+
+
+.centersp {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
