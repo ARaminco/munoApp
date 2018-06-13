@@ -18,6 +18,9 @@
         },
         "cordova-plugin-splashscreen": {
             "PACKAGE_NAME": "co.araminco.muno"
+        },
+        "cordova-plugin-device": {
+            "PACKAGE_NAME": "co.araminco.muno"
         }
     },
     "dependent_plugins": {}
