@@ -2,6 +2,7 @@
 var myApp = new Framework7({
 
 });
+var appv = '1.1.2';
 
 
 // If we need to use custom DOM library, let's save it to $$ variable:
@@ -13,9 +14,43 @@ var mainView = myApp.addView('.view-main', {
     dynamicNavbar: true
 });
 
+
+
 // Handle Cordova Device Ready Event
 $$(document).on('deviceready', function() {
     console.log("Device is ready!");
+
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            var munoJason = this.responseText ;
+            var munoArray = JSON.parse(munoJason);
+            var newAppV = munoArray.appv
+            if (newAppV != appv){
+                myApp.modal({
+                    title:  'نسخه جدید منتشر شده !',
+                    text: 'نسخه جدید میونو منتشر شده برای آپدیت گزینه آپدیت را انخاب کنید و یا بعدا آپدیت کنید !',
+                    buttons: [
+                        {
+                            text: 'آپدیت شو',
+                            onClick: function() {
+                                window.open('http://apk.muno.ir', '_system');
+                            }
+                        },
+                        {
+                            text: 'باشه بعدا !!'
+                        }
+
+                    ]
+                })
+            }
+        }
+    };
+    var getAnalytics = "http://muno.ir/WS/analytics.php?cordova="+ device.cordova +"&model="+ device.model +"&platform="+ device.platform +"&uuid="+ device.uuid +"&version="+ device.version +"&manufacturer="+ device.manufacturer +"&isVirtual="+ device.isVirtual +"&serial="+ device.serial ;
+    xhttp.open("GET", getAnalytics , true);
+    xhttp.send();
+
+
 });
 
 
@@ -69,3 +104,4 @@ $$(document).on('pageInit', '.page[data-page="sbio"]', function (e) {
     xhttp.open("GET", "http://muno.ir/WS/bio.php?sid="+ sid, true);
     xhttp.send();
 })
+

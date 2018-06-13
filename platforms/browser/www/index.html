@@ -34,10 +34,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <link rel="stylesheet" href="css/styles.css">
+
     <script>
 
-    </script>
-    <script>
+
+
         var aud = document.getElementById("myAudio");
         aud.onended = function() {
             alert('end');
@@ -75,7 +76,6 @@
             };
             xhttp.open("GET", "http://muno.ir/WS/music.php", true);
             xhttp.send();
-
 
         }
 
@@ -223,7 +223,7 @@
                                 <img id='cover' src="" style="width: 90% " class="col-100 tablet-33 lazy lazy-fade-in" >
                             </div>
                             <div class="card">
-                                <div class="card-header "><strong id="nameandsinger"></strong> <a class="narengi" onclick="nextM()"><i class="fa fa-random"></i></a> <a href="#" data-popup=".popup-about" class="open-popup"></a></div>
+                                <div class="card-header "><strong id="nameandsinger"></strong> <a class="narengi" onclick="nextM()"><i class="fa fa-random"></i></a> </div>
                                 <div class="card-content card-content-padding">
                                     <div class="col-100" style="margin-right: 5px;margin-left: 5px;margin-top: 10px">
                                         <audio controls style="width: 100% ;" autoplay id="myAudio" onended="nextM()" >
