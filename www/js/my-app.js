@@ -25,7 +25,7 @@ $$(document).on('deviceready', function() {
         if (this.readyState == 4 && this.status == 200) {
             var munoJason = this.responseText ;
             var munoArray = JSON.parse(munoJason);
-            var newAppV = munoArray.appv
+            var newAppV = munoArray.appv;
             if (newAppV != appv){
                 myApp.modal({
                     title:  'نسخه جدید منتشر شده !',

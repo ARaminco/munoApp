@@ -2,7 +2,7 @@
 var myApp = new Framework7({
 
 });
-var appv = '1.1.2';
+var appv = '1.1.3';
 
 
 // If we need to use custom DOM library, let's save it to $$ variable:
@@ -25,7 +25,7 @@ $$(document).on('deviceready', function() {
         if (this.readyState == 4 && this.status == 200) {
             var munoJason = this.responseText ;
             var munoArray = JSON.parse(munoJason);
-            var newAppV = munoArray.appv
+            var newAppV = munoArray.appv;
             if (newAppV != appv){
                 myApp.modal({
                     title:  'نسخه جدید منتشر شده !',
