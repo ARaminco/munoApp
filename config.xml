@@ -111,5 +111,6 @@
     <plugin name="cordova-plugin-whitelist" spec="1.2.2" />
     <plugin name="cordova-plugin-splashscreen" source="npm" />
     <plugin name="cordova-plugin-device" source="npm" />
+    <plugin name="cordova-plugin-barcodescanner" source="npm" />
 
 </widget>
