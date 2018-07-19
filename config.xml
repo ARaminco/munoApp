@@ -103,7 +103,6 @@
         <preference name="BackupWebStorage" value="none" />
 
     </platform>
-    <preference name="SplashScreenDelay" value="10000" />
 
     <preference name="DisallowOverscroll" value="true" />
     <plugin name="cordova-plugin-console" spec="1.0.7" />

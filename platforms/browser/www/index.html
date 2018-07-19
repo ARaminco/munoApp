@@ -95,7 +95,7 @@
                     for (i = 0; i < listArray.length; i++) {
                         tout += "<li>\n" +
                             "<a href=\"#\" class=\"item-link close-popup item-content\" onclick='nextM(" + listArray[i].mid + " , \"\")'>\n" +
-                            "<div class=\"item-media\"><img src=\""+ listArray[i].cover +"\" width=\"80\"></div>\n" +
+                            "<div class=\"item-media\"><img src=\""+ listArray[i].cover +"\" width=\"80\" class='lazy lazy-fade-in'></div>\n" +
                             "<div class=\"item-inner\">\n" +
                             "<div class=\"item-title-row\">\n" +
                             "<div class=\"item-title\">"+ listArray[i].mname +"</div>\n" +
@@ -165,14 +165,13 @@
             <hr style="border-color: #F59331;" >
         </div>
         <div class="content-block" style="text-align: right">
-
+            <p><a class="sefid panel-close" href="#" onclick="brscaner()"><i class="fa fa-qrcode"></i> بارکد خوان </a></p>
             <p><a class="sefid panel-close" href="changes.html" onclick="menuFunction()"><i class="fa fa-star"></i> تغییرات اپلیکیشن </a></p>
             <p><a class="sefid panel-close" href="#" onclick="window.open('http://apk.muno.ir', '_system');" ><i class="fa fa-android"></i> نصب آخرین نسخه آندروید </a></p>
             <p><a class="sefid panel-close" href="#" onclick="window.open('http://instagram.com/muno.ir', '_system');" ><i class="fa fa-instagram"></i> صفحه اینستاگرام میونو </a></p>
             <p><a class="sefid panel-close" href="#" onclick="window.open('http://t.me/munoir', '_system');" ><i class="fa fa-telegram"></i> صفحه تلگرام میونو </a></p>
             <p><a class="sefid panel-close" href="#" onclick="window.open('http://muno.irr', '_system');" ><i class="fa fa-globe"></i> سایت میونو </a></p>
             <p><a class="sefid panel-close" href="about.html" onclick="menuFunction()"><i class="fa fa-question-circle-o"></i> درباره ما</a></p>
-
         </div>
     </div>
 
@@ -235,7 +234,7 @@
                     <div class="page-content mymunocontent" id="musicPlay" style="display: none">
                         <div class="content-block " id="play">
                             <div class="t-center"  >
-                                <img id='cover' src="" style="width: 90% " class="col-100 tablet-33 lazy lazy-fade-in" >
+                                <img id='cover' src="" style="width: 90% " class="col-100 tablet-33 lazy lazy-fade-in " >
                             </div>
                             <div class="card">
                                 <div class="card-header "><strong id="nameandsinger"></strong> <a class="narengi" onclick="nextM('','')"><i class="fa fa-random"></i></a> </div>
@@ -248,7 +247,7 @@
                                     <div class="row">
                                         <p id="singerid" style="display: none"></p>
                                         <div class="col-25" style="margin-top: -10px ">
-                                            <img src="http://qrg.aramin.co/?text=http://muno.ir/p-301" onclick="" id="munoQR">
+                                            <img src="http://qrg.aramin.co/?text=http://muno.ir/p-301" class="lazy lazy-fade-in" onclick="" id="munoQR">
 
                                         </div>
                                         <div class="col-75">

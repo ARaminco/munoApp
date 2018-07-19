@@ -32,6 +32,12 @@
         },
         "cordova-plugin-device": {
             "PACKAGE_NAME": "co.araminco.muno"
+        },
+        "cordova-plugin-compat": {
+            "PACKAGE_NAME": "co.araminco.muno"
+        },
+        "cordova-plugin-barcodescanner": {
+            "PACKAGE_NAME": "co.araminco.muno"
         }
     },
     "dependent_plugins": {},
@@ -71,6 +77,14 @@
             "id": "cordova-plugin-device.DeviceProxy",
             "pluginId": "cordova-plugin-device",
             "runs": true
+        },
+        {
+            "file": "plugins/cordova-plugin-barcodescanner/www/barcodescanner.js",
+            "id": "cordova-plugin-barcodescanner.BarcodeScanner",
+            "pluginId": "cordova-plugin-barcodescanner",
+            "clobbers": [
+                "cordova.plugins.barcodeScanner"
+            ]
         }
     ],
     "plugin_metadata": {
@@ -78,6 +92,8 @@
         "cordova-plugin-console": "1.0.7",
         "cordova-plugin-statusbar": "1.0.1",
         "cordova-plugin-splashscreen": "5.0.2",
-        "cordova-plugin-device": "2.0.2"
+        "cordova-plugin-device": "2.0.2",
+        "cordova-plugin-compat": "1.2.0",
+        "cordova-plugin-barcodescanner": "0.7.4"
     }
 }

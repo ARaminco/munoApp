@@ -105,3 +105,17 @@ $$(document).on('pageInit', '.page[data-page="sbio"]', function (e) {
     xhttp.send();
 })
 
+function brscaner() {
+    cordova.plugins.barcodeScanner.scan(
+        function (result) {
+
+            var code = result.text ;
+            var endcode = code.replace('http://muno.ir/p-','');
+            nextM(endcode ,'');
+
+        },
+        function (error) {
+            alert("Scanning failed: " + error);
+        }
+    );
+}
